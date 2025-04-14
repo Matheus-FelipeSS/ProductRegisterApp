@@ -1,0 +1,33 @@
+@model ProductControl.Models.Product
+
+<h1>@ViewData["Title"]</h1>
+
+<form asp-action="@(Model.IdProduct == 0 ? "Create" : "Edit")" asp-controller="Product" method="post">
+    <input type="hidden" asp-for="IdProduct" />
+
+    <div class="mb-3">
+        <label asp-for="Produto" class="form-label"></label>
+        <input asp-for="Produto" class="form-control" />
+        <span asp-validation-for="Produto" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Quantidade" class="form-label"></label>
+        <input asp-for="Quantidade" class="form-control" />
+        <span asp-validation-for="Quantidade" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="DataEntrega" class="form-label"></label>
+        <input asp-for="DataEntrega" type="date" class="form-control" />
+        <span asp-validation-for="DataEntrega" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Validade" class="form-label"></label>
+        <input asp-for="Validade" type="date" class="form-control" />
+        <span asp-validation-for="Validade" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Salvar</button>
+</form>
