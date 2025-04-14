@@ -1,14 +1,16 @@
-using TWTodos.Models;
-
-namespace TWTodos.Services
+namespace ProductControl.Services
 {
-    public interface ITodoService
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using ProductControl.Models;
+
+    public interface IProductService
     {
-        Task<List<Todo>> GetAllAsync();
-        Task<Todo?> GetByIdAsync(int id);
-        Task AddAsync(Todo todo);
-        Task UpdateAsync(Todo todo);
+        Task<List<Product>> GetAllAsync();
+        Task<Product?> GetByIdAsync(int id);
+        Task AddAsync(Product product);
+        Task UpdateAsync(Product product);
         Task DeleteAsync(int id);
-        Task FinishAsync(int id); // ← Adicione esta linha
+        Task FinishAsync(int id);
     }
 }

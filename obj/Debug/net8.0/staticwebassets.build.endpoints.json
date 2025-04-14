@@ -3,8 +3,8 @@
   "ManifestType": "Build",
   "Endpoints": [
     {
-      "Route": "TWTodos.36sobnztbe.styles.css",
-      "AssetFile": "TWTodos.styles.css",
+      "Route": "ProductControl.hxcya0mekt.styles.css",
+      "AssetFile": "ProductControl.styles.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -17,7 +17,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1125"
+          "Value": "1132"
         },
         {
           "Name": "Content-Type",
@@ -25,31 +25,31 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"m7v/Xd82oVkuHfgUdRz15S1dXzt4LbtUrx+1YhRnkYo=\""
+          "Value": "\"C2BcCkdK6Cf6bQaBYPAXx3Kh7jPcJaPnJaF56xOH7D4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 08 Apr 2025 16:43:16 GMT"
+          "Value": "Mon, 14 Apr 2025 01:12:19 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "36sobnztbe"
+          "Value": "hxcya0mekt"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-m7v/Xd82oVkuHfgUdRz15S1dXzt4LbtUrx+1YhRnkYo="
+          "Value": "sha256-C2BcCkdK6Cf6bQaBYPAXx3Kh7jPcJaPnJaF56xOH7D4="
         },
         {
           "Name": "label",
-          "Value": "TWTodos.styles.css"
+          "Value": "ProductControl.styles.css"
         }
       ]
     },
     {
-      "Route": "TWTodos.styles.css",
-      "AssetFile": "TWTodos.styles.css",
+      "Route": "ProductControl.styles.css",
+      "AssetFile": "ProductControl.styles.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -62,7 +62,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1125"
+          "Value": "1132"
         },
         {
           "Name": "Content-Type",
@@ -70,17 +70,17 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"m7v/Xd82oVkuHfgUdRz15S1dXzt4LbtUrx+1YhRnkYo=\""
+          "Value": "\"C2BcCkdK6Cf6bQaBYPAXx3Kh7jPcJaPnJaF56xOH7D4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 08 Apr 2025 16:43:16 GMT"
+          "Value": "Mon, 14 Apr 2025 01:12:19 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-m7v/Xd82oVkuHfgUdRz15S1dXzt4LbtUrx+1YhRnkYo="
+          "Value": "sha256-C2BcCkdK6Cf6bQaBYPAXx3Kh7jPcJaPnJaF56xOH7D4="
         }
       ]
     },

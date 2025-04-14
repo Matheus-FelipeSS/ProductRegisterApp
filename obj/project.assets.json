@@ -2908,9 +2908,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mathe\\OneDrive\\Desktop\\ProductRegisterApp\\TWTodos.csproj",
-      "projectName": "TWTodos",
-      "projectPath": "C:\\Users\\mathe\\OneDrive\\Desktop\\ProductRegisterApp\\TWTodos.csproj",
+      "projectUniqueName": "C:\\Users\\mathe\\OneDrive\\Desktop\\ProductRegisterApp\\ProductControl.csproj",
+      "projectName": "ProductControl",
+      "projectPath": "C:\\Users\\mathe\\OneDrive\\Desktop\\ProductRegisterApp\\ProductControl.csproj",
       "packagesPath": "C:\\Users\\mathe\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\mathe\\OneDrive\\Desktop\\ProductRegisterApp\\obj\\",
       "projectStyle": "PackageReference",

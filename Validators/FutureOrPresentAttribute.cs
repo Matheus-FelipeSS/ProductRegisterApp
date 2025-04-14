@@ -1,21 +1,24 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace TWTodos.Validators;
-
-public class FutureOrPresentAttribute : ValidationAttribute
+namespace ProductControl.Validators
 {
-    public FutureOrPresentAttribute()
+
+    public class FutureOrPresentAttribute : ValidationAttribute
     {
-        ErrorMessage = "O campo {0} deve ser preenchido com uma data presente ou futura.";
+        public FutureOrPresentAttribute()
+        {
+            ErrorMessage = "O campo {0} deve ser preenchido com uma data presente ou futura.";
+        }
+
+        public override bool IsValid(object? value)
+        {
+            if (value is null)
+            {
+                return true;
+            }
+            var date = (DateOnly)value;
+            return date >= DateOnly.FromDateTime(DateTime.Now);
+        }
     }
 
-    public override bool IsValid(object? value)
-    {
-        if (value is null)
-        {
-            return true;
-        }
-        var date = (DateOnly)value;
-        return date >= DateOnly.FromDateTime(DateTime.Now);
-    }
 }

@@ -1,8 +1,8 @@
-namespace TWTodos.Models;
+namespace ProductControl.Models;
 
 public class ErrorViewModel
 {
     public string? RequestId { get; set; }
 
-    public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
+    public bool ShowRequestId => !string.IsNullOrWhiteSpace(RequestId);
 }
