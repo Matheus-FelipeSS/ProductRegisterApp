@@ -21,29 +21,34 @@ namespace ProductControl.Controllers
         }
 
         public IActionResult Create()
-{
-    ViewData["Title"] = "Criar Produto";
-    return View("Form", new Product());
-}
+        {
+            ViewData["Title"] = "Criar Produto";
 
-[HttpPost]
-[ValidateAntiForgeryToken]
-public async Task<IActionResult> Create(Product product)
-{
-    if (ModelState.IsValid)
-    {
-        // Normaliza o nome do produto para Title Case
-        var textInfo = System.Globalization.CultureInfo.CurrentCulture.TextInfo;
-        product.Produto = textInfo.ToTitleCase(product.Produto.ToLower());
+            var produto = new Product
+            {
+                DataEntrega = DateOnly.FromDateTime(DateTime.Now),
+                Validade = DateOnly.FromDateTime(DateTime.Now.AddDays(30))
+            };
 
-        await _productService.AddAsync(product);
-        return RedirectToAction(nameof(Index));
-    }
+            return View("Form", produto);
+        }
 
-    ViewData["Title"] = "Criar Produto";
-    return View("Form", product);
-}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(Product product)
+        {
+            if (ModelState.IsValid)
+            {
+                var textInfo = System.Globalization.CultureInfo.CurrentCulture.TextInfo;
+                product.Produto = textInfo.ToTitleCase(product.Produto.ToLower());
 
+                await _productService.AddAsync(product);
+                return RedirectToAction(nameof(Index));
+            }
+
+            ViewData["Title"] = "Criar Produto";
+            return View("Form", product);
+        }
 
         public async Task<IActionResult> Edit(int id)
         {

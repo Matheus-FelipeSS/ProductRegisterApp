@@ -4,7 +4,7 @@
 
 <p>Tem certeza que deseja excluir o produto <strong>@Model.Produto</strong>?</p>
 
-<form method="POST">
+<form method="post" asp-action="DeleteConfirmed" asp-route-id="@Model.IdProduct">
     <button class="btn btn-danger" type="submit">Excluir</button>
-    <a asp-controller="Todo" asp-action="Index" class="btn btn-primary">Cancelar</a>
+    <a asp-controller="Product" asp-action="Index" class="btn btn-primary">Cancelar</a>
 </form>

@@ -8,16 +8,16 @@ public class Product
     [Key]
     public int IdProduct { get; set; }
 
- private string _produto = string.Empty;
+    private string _produto = string.Empty;
 
-[Display(Name = "Nome do Produto")]
-[Required(ErrorMessage = "O campo {0} é obrigatório.")]
-[StringLength(100, MinimumLength = 3, ErrorMessage = "O campo {0} deve ter entre {2} e {1} caracteres.")]
-public string Produto
-{
-    get => _produto;
-    set => _produto = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(value?.ToLower() ?? string.Empty);
-}
+    [Display(Name = "Nome do Produto")]
+    [Required(ErrorMessage = "O campo {0} é obrigatório.")]
+    [StringLength(100, MinimumLength = 3, ErrorMessage = "O campo {0} deve ter entre {2} e {1} caracteres.")]
+    public string Produto
+    {
+        get => _produto;
+        set => _produto = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(value?.ToLower() ?? string.Empty);
+    }
 
     [Display(Name = "Quantidade")]
     [Required(ErrorMessage = "O campo {0} é obrigatório.")]

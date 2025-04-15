@@ -15,7 +15,6 @@ namespace ProductControl.Migrations
     [Migration("20250414010652_InitialCreate")]
     partial class InitialCreate
     {
-        /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
