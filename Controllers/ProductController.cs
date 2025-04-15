@@ -21,51 +21,56 @@ namespace ProductControl.Controllers
         }
 
         public IActionResult Create()
-        {
-            ViewData["Title"] = "Criar Produto";
-            return View("Form", new Product());
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Product product)
-        {
-            if (ModelState.IsValid)
-            {
-                await _productService.AddAsync(product);
-                return RedirectToAction(nameof(Index));
-            }
-
-            ViewData["Title"] = "Criar Produto";
-            return View("Form", product);
-        }
-
-        public async Task<IActionResult> Edit(int id)
 {
-    var product = await _productService.GetByIdAsync(id);
-    if (product == null)
-        return NotFound();
-
-    ViewData["Title"] = "Editar Produto";
-    return View("Form", product);
+    ViewData["Title"] = "Criar Produto";
+    return View("Form", new Product());
 }
 
 [HttpPost]
 [ValidateAntiForgeryToken]
-public async Task<IActionResult> Edit(int id, Product product)
+public async Task<IActionResult> Create(Product product)
 {
-    if (id != product.IdProduct)
-        return NotFound();
-
     if (ModelState.IsValid)
     {
-        await _productService.UpdateAsync(product);
+        // Normaliza o nome do produto para Title Case
+        var textInfo = System.Globalization.CultureInfo.CurrentCulture.TextInfo;
+        product.Produto = textInfo.ToTitleCase(product.Produto.ToLower());
+
+        await _productService.AddAsync(product);
         return RedirectToAction(nameof(Index));
     }
 
-    ViewData["Title"] = "Editar Produto";
+    ViewData["Title"] = "Criar Produto";
     return View("Form", product);
 }
+
+
+        public async Task<IActionResult> Edit(int id)
+        {
+            var product = await _productService.GetByIdAsync(id);
+            if (product == null)
+                return NotFound();
+
+            ViewData["Title"] = "Editar Produto";
+            return View("Form", product);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, Product product)
+        {
+            if (id != product.IdProduct)
+                return NotFound();
+
+            if (ModelState.IsValid)
+            {
+                await _productService.UpdateAsync(product);
+                return RedirectToAction(nameof(Index));
+            }
+
+            ViewData["Title"] = "Editar Produto";
+            return View("Form", product);
+        }
 
         public async Task<IActionResult> Delete(int id)
         {
