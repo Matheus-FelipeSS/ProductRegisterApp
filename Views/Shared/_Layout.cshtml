@@ -1,49 +1,70 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    var lojaLogada = HttpContextAccessor.HttpContext?.Session.GetInt32("LojaId");
+}
+<!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - ProductControl</title>
 
-    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/ProductControl.styles.css" asp-append-version="true" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
 </head>
-<body>
+
+<body class="d-flex flex-column min-vh-100">
     <header>
-        <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Product" asp-action="Index">ProductControl</a>
+        <nav class="navbar navbar-expand-md navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand fw-bold" asp-area="" asp-controller="Product" asp-action="Index">
+                    <i class="bi bi-box-seam me-2"></i>ProductControl
+                </a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Product" asp-action="Index">Produtos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Product" asp-action="Create">Novo Produto</a>
-                        </li>
-                    </ul>
-                </div>
+                @if (lojaLogada != null)
+                {
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Product" asp-action="Index">
+                                    <i class="bi bi-list-ul me-1"></i>Produtos
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Product" asp-action="Create">
+                                    <i class="bi bi-plus-circle me-1"></i>Novo Produto
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <form asp-controller="Loja" asp-action="Logout" method="post" class="d-inline">
+                                    <button type="submit" class="btn btn-link nav-link">Sair</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                }
             </div>
         </nav>
     </header>
 
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+    <main class="container flex-grow-1">
+        @RenderBody()
+    </main>
 
-    <footer class="border-top footer text-muted mt-5">
-        <div class="container">
-            &copy; 2025 - ProductControl - Desenvolvido com ASP.NET
+    <footer class="border-top footer py-3" style="background-color: #343a40;">
+        <div class="container text-center text-md-start text-light">
+            &copy; @DateTime.Now.Year - ProductControl - Desenvolvido com ASP.NET Core
         </div>
     </footer>
 
@@ -52,5 +73,5 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
-</html>
 
+</html>
