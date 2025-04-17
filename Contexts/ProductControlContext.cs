@@ -10,6 +10,7 @@ namespace ProductControl.Contexts
 
         public DbSet<Product> Products => Set<Product>();
 
+         public DbSet<Loja> Lojas => Set<Loja>();
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             var dateTimeConverter = new ValueConverter<DateTime, DateTime>(

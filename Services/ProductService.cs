@@ -60,5 +60,14 @@ namespace ProductControl.Services
                 await _context.SaveChangesAsync();
             }
         }
+
+        public async Task<List<Product>> GetByLojaIdAsync(int idLoja)
+        {
+            return await _context.Products
+                .Where(p => p.IdLoja == idLoja)
+                .OrderBy(p => p.FinalizadoEm.HasValue)
+                .ThenBy(p => p.Validade)
+                .ToListAsync();
+        }
     }
 }

@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using ProductControl.Validators;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProductControl.Models;
 
@@ -41,4 +42,10 @@ public class Product
 
     [Display(Name = "Finalizado em")]
     public DateOnly? FinalizadoEm { get; set; }
+
+    [Display(Name = "Loja")]
+    public int IdLoja { get; set; }
+
+    [ForeignKey(nameof(IdLoja))]
+    public Loja? Loja { get; set; }
 }

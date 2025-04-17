@@ -12,5 +12,6 @@ namespace ProductControl.Services
         Task UpdateAsync(Product product);
         Task DeleteAsync(int id);
         Task FinishAsync(int id);
+        Task<List<Product>> GetByLojaIdAsync(int idLoja);
     }
 }

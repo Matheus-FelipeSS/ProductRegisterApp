@@ -15,9 +15,21 @@ namespace ProductControl.Controllers
 
         public async Task<IActionResult> Index()
         {
-            ViewData["Title"] = "Controle de Produtos";
-            var products = await _productService.GetAllAsync();
-            return View(products);
+            try
+            {
+                ViewData["Title"] = "Controle de Produtos";
+                var idLoja = HttpContext.Session.GetInt32("LojaId");
+                if (idLoja == null)
+                    return RedirectToAction("Login", "Loja");
+
+                var produtos = await _productService.GetByLojaIdAsync(idLoja.Value);
+                return View(produtos);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[ERRO INDEX] {ex.Message}");
+                return Content("Erro ao carregar a lista de produtos.");
+            }
         }
 
         public IActionResult Create()
@@ -37,17 +49,23 @@ namespace ProductControl.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Product product)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                var textInfo = System.Globalization.CultureInfo.CurrentCulture.TextInfo;
-                product.Produto = textInfo.ToTitleCase(product.Produto.ToLower());
-
-                await _productService.AddAsync(product);
-                return RedirectToAction(nameof(Index));
+                ViewData["Title"] = "Criar Produto";
+                return View("Form", product);
             }
 
-            ViewData["Title"] = "Criar Produto";
-            return View("Form", product);
+            var idLoja = HttpContext.Session.GetInt32("LojaId");
+            if (idLoja == null)
+                return RedirectToAction("Login", "Loja");
+
+            product.IdLoja = idLoja.Value;
+            product.CreatedAt = DateTime.Now;
+
+            await _productService.AddAsync(product);
+
+            TempData["Mensagem"] = "✅ Produto cadastrado com sucesso!";
+            return RedirectToAction(nameof(Index));
         }
 
         public async Task<IActionResult> Edit(int id)
@@ -67,14 +85,22 @@ namespace ProductControl.Controllers
             if (id != product.IdProduct)
                 return NotFound();
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                await _productService.UpdateAsync(product);
-                return RedirectToAction(nameof(Index));
+                ViewData["Title"] = "Editar Produto";
+                return View("Form", product);
             }
 
-            ViewData["Title"] = "Editar Produto";
-            return View("Form", product);
+            var idLoja = HttpContext.Session.GetInt32("LojaId");
+            if (idLoja == null)
+                return RedirectToAction("Login", "Loja");
+
+            product.IdLoja = idLoja.Value;
+
+            await _productService.UpdateAsync(product);
+
+            TempData["Mensagem"] = "✏️ Produto atualizado com sucesso!";
+            return RedirectToAction(nameof(Index));
         }
 
         public async Task<IActionResult> Delete(int id)
@@ -92,12 +118,16 @@ namespace ProductControl.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             await _productService.DeleteAsync(id);
+
+            TempData["Mensagem"] = "🗑️ Produto excluído com sucesso!";
             return RedirectToAction(nameof(Index));
         }
 
         public async Task<IActionResult> Finish(int id)
         {
             await _productService.FinishAsync(id);
+
+            TempData["Mensagem"] = "✅ Produto marcado como finalizado.";
             return RedirectToAction(nameof(Index));
         }
     }
