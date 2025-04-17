@@ -2,12 +2,16 @@
 
 <h1>@ViewData["Title"]</h1>
 
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
 <form asp-action="@(Model.IdProduct == 0 ? "Create" : "Edit")" asp-controller="Product" method="post">
+    @Html.AntiForgeryToken()
+
     <input type="hidden" asp-for="IdProduct" />
 
     <div class="mb-3">
         <label asp-for="Produto" class="form-label"></label>
-        <input asp-for="Produto" class="form-control" id="produtoInput" />
+        <input asp-for="Produto" class="form-control" />
         <span asp-validation-for="Produto" class="text-danger"></span>
     </div>
 
@@ -19,15 +23,13 @@
 
     <div class="mb-3">
         <label asp-for="DataEntrega" class="form-label"></label>
-        <input asp-for="DataEntrega" type="date" class="form-control"
-               value="@Model.DataEntrega.ToString("yyyy-MM-dd")" />
+        <input asp-for="DataEntrega" type="date" class="form-control" />
         <span asp-validation-for="DataEntrega" class="text-danger"></span>
     </div>
 
     <div class="mb-3">
         <label asp-for="Validade" class="form-label"></label>
-        <input asp-for="Validade" type="date" class="form-control"
-               value="@Model.Validade.ToString("yyyy-MM-dd")" />
+        <input asp-for="Validade" type="date" class="form-control" />
         <span asp-validation-for="Validade" class="text-danger"></span>
     </div>
 
@@ -35,17 +37,5 @@
 </form>
 
 @section Scripts {
-    <script>
-        const produtoInput = document.getElementById("produtoInput");
-
-        produtoInput?.addEventListener("input", function () {
-            let valor = this.value;
-
-            valor = valor.split(' ').map(function (palavra) {
-                return palavra.charAt(0).toUpperCase() + palavra.slice(1).toLowerCase();
-            }).join(' ');
-
-            this.value = valor;
-        });
-    </script>
+    <partial name="_ValidationScriptsPartial" />
 }
