@@ -25,16 +25,16 @@ public class Product
     [Range(1, int.MaxValue, ErrorMessage = "A {0} deve ser maior que zero.")]
     public int Quantidade { get; set; }
 
-    [Display(Name = "Data de Entrega")]
+    [Display(Name = "Data de Fabricação")]
     [Required(ErrorMessage = "O campo {0} é obrigatório.")]
     [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-    [FutureOrPresent(ErrorMessage = "A data de entrega deve ser no presente ou no futuro.")]
-    public DateOnly DataEntrega { get; set; }
+    [FutureOrPresent(ErrorMessage = "A data de fabricação deve ser hoje ou em uma data futura.")]
+    public DateOnly DataFabricacao { get; set; }
 
     [Display(Name = "Validade")]
     [Required(ErrorMessage = "O campo {0} é obrigatório.")]
     [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-    [FutureOrPresent(ErrorMessage = "A data de validade deve ser posterior a data de entrega.")]
+    [FutureOrPresent(ErrorMessage = "A data de validade deve ser posterior à data de fabricação.")]
     public DateOnly Validade { get; set; }
 
     [Display(Name = "Criado em")]

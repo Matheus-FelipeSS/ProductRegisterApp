@@ -38,7 +38,7 @@ namespace ProductControl.Controllers
 
             var produto = new Product
             {
-                DataEntrega = DateOnly.FromDateTime(DateTime.Now),
+                DataFabricacao = DateOnly.FromDateTime(DateTime.Now),
                 Validade = DateOnly.FromDateTime(DateTime.Now.AddDays(30))
             };
 
