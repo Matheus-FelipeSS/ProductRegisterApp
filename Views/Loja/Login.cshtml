@@ -2,12 +2,23 @@
     ViewData["Title"] = "Login";
 }
 
-<h2>Login</h2>
+@section Styles {
+    <link rel="stylesheet" href="~/css/login.css" />
+}
 
-<form method="post">
-    <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" class="form-control" id="email" name="email" required />
+<div class="login-container">
+    <h2>Login</h2>
+
+    <form asp-controller="Loja" asp-action="Login" method="post">
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" name="email" class="form-control" id="email" required />
+        </div>
+        <button type="submit" class="btn btn-primary">Entrar</button>
+    </form>
+
+    <div class="login-footer">
+        <span>Não tem uma conta? </span>
+        <a asp-controller="Loja" asp-action="Create">Cadastrar nova loja</a>
     </div>
-    <button type="submit" class="btn btn-primary">Entrar</button>
-</form>
+</div>
