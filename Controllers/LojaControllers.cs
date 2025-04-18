@@ -34,6 +34,7 @@ public class LojaController : Controller
 
         HttpContext.Session.SetInt32("LojaId", loja.IdLoja);
         HttpContext.Session.SetString("Email", loja.Email);
+        HttpContext.Session.SetString("LojaNome", loja.Nome);
 
         return RedirectToAction("Index", "Product");
     }

@@ -1,8 +1,11 @@
 ﻿@using Microsoft.AspNetCore.Http
 @inject IHttpContextAccessor HttpContextAccessor
+
 @{
     var lojaLogada = HttpContextAccessor.HttpContext?.Session.GetInt32("LojaId");
+    var nomeDaLoja = HttpContextAccessor.HttpContext?.Session.GetString("LojaNome");
 }
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -16,6 +19,7 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/ProductControl.styles.css" asp-append-version="true" />
 
+    @RenderSection("Styles", required: false)
     <style>
         body {
             padding-top: 0;
@@ -36,6 +40,7 @@
         }
     </style>
 </head>
+
 <body class="d-flex flex-column min-vh-100">
     <header>
         <nav class="navbar navbar-expand-md navbar-light bg-white border-bottom box-shadow mb-3">
@@ -53,6 +58,11 @@
                 {
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav ms-auto">
+                            <li class="nav-item me-3">
+                                <span class="navbar-text fw-bold">
+                                    <i class="bi bi-shop me-1"></i> @nomeDaLoja
+                                </span>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" asp-controller="Product" asp-action="Index">
                                     <i class="bi bi-list-ul me-1"></i>Produtos
