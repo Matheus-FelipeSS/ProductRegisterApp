@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "T5GV+mhi347CGQ2uSXi7yBSdUFnAwe4JZy3UIb8i0ak=",
+  "Hash": "Lwg7MhZM6LqlgNZ/GsvC9SFwC5BmwSidCwVjI8q2bZE=",
   "Source": "ProductControl",
   "BasePath": "_content/ProductControl",
   "Mode": "Default",
@@ -57,6 +57,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\mathe\\OneDrive\\Desktop\\ProductRegisterApp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\ProductControl.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\mathe\\OneDrive\\Desktop\\ProductRegisterApp\\wwwroot\\css\\login.css",
+      "SourceId": "ProductControl",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\mathe\\OneDrive\\Desktop\\ProductRegisterApp\\wwwroot\\",
+      "BasePath": "_content/ProductControl",
+      "RelativePath": "css/login#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "32qzmbpd5q",
+      "Integrity": "Vd8usozwIPDRjqfMuPXn1dul/hjnDZGOhw0Ad486E6w=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\login.css"
     },
     {
       "Identity": "C:\\Users\\mathe\\OneDrive\\Desktop\\ProductRegisterApp\\wwwroot\\css\\site.css",
@@ -1383,6 +1404,88 @@
     }
   ],
   "Endpoints": [
+    {
+      "Route": "css/login.32qzmbpd5q.css",
+      "AssetFile": "C:\\Users\\mathe\\OneDrive\\Desktop\\ProductRegisterApp\\wwwroot\\css\\login.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "695"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Vd8usozwIPDRjqfMuPXn1dul/hjnDZGOhw0Ad486E6w=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 18 Apr 2025 02:43:52 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "32qzmbpd5q"
+        },
+        {
+          "Name": "label",
+          "Value": "css/login.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Vd8usozwIPDRjqfMuPXn1dul/hjnDZGOhw0Ad486E6w="
+        }
+      ]
+    },
+    {
+      "Route": "css/login.css",
+      "AssetFile": "C:\\Users\\mathe\\OneDrive\\Desktop\\ProductRegisterApp\\wwwroot\\css\\login.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "695"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Vd8usozwIPDRjqfMuPXn1dul/hjnDZGOhw0Ad486E6w=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 18 Apr 2025 02:43:52 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Vd8usozwIPDRjqfMuPXn1dul/hjnDZGOhw0Ad486E6w="
+        }
+      ]
+    },
     {
       "Route": "css/site.52ri3zsstl.css",
       "AssetFile": "C:\\Users\\mathe\\OneDrive\\Desktop\\ProductRegisterApp\\wwwroot\\css\\site.css",
@@ -6572,7 +6675,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 17 Apr 2025 15:21:28 GMT"
+          "Value": "Fri, 18 Apr 2025 03:53:28 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6609,7 +6712,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 17 Apr 2025 15:21:28 GMT"
+          "Value": "Fri, 18 Apr 2025 03:53:28 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6654,7 +6757,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 17 Apr 2025 15:21:28 GMT"
+          "Value": "Fri, 18 Apr 2025 03:53:28 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6699,7 +6802,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 17 Apr 2025 15:21:28 GMT"
+          "Value": "Fri, 18 Apr 2025 03:53:28 GMT"
         },
         {
           "Name": "Cache-Control",

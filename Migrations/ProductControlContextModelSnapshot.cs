@@ -54,7 +54,7 @@ namespace ProductControl.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<DateOnly>("DataEntrega")
+                    b.Property<DateOnly>("DataFabricacao")
                         .HasColumnType("date");
 
                     b.Property<DateOnly?>("FinalizadoEm")

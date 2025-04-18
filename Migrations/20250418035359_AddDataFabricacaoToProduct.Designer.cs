@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
@@ -11,8 +12,8 @@ using ProductControl.Contexts;
 namespace ProductControl.Migrations
 {
     [DbContext(typeof(ProductControlContext))]
-    [Migration("20250416022525_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20250418035359_AddDataFabricacaoToProduct")]
+    partial class AddDataFabricacaoToProduct
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -55,16 +56,13 @@ namespace ProductControl.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<DateOnly>("DataEntrega")
+                    b.Property<DateOnly>("DataFabricacao")
                         .HasColumnType("date");
 
                     b.Property<DateOnly?>("FinalizadoEm")
                         .HasColumnType("date");
 
                     b.Property<int>("IdLoja")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("LojaIdLoja")
                         .HasColumnType("integer");
 
                     b.Property<string>("Produto")
@@ -80,7 +78,7 @@ namespace ProductControl.Migrations
 
                     b.HasKey("IdProduct");
 
-                    b.HasIndex("LojaIdLoja");
+                    b.HasIndex("IdLoja");
 
                     b.ToTable("Products");
                 });
@@ -89,7 +87,7 @@ namespace ProductControl.Migrations
                 {
                     b.HasOne("ProductControl.Models.Loja", "Loja")
                         .WithMany("Produtos")
-                        .HasForeignKey("LojaIdLoja")
+                        .HasForeignKey("IdLoja")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
