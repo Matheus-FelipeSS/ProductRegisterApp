@@ -15,29 +15,30 @@ public class LojaController : Controller
 
     public IActionResult Login() => View();
 
-    [HttpPost]
-    public async Task<IActionResult> Login(string email)
+  [HttpPost]
+public async Task<IActionResult> Login(string email)
+{
+    if (string.IsNullOrWhiteSpace(email))
     {
-        if (string.IsNullOrWhiteSpace(email))
-        {
-            ModelState.AddModelError("Email", "Informe um email válido.");
-            return View();
-        }
-
-        email = email.Trim().ToLower();
-
-        var loja = await _context.Lojas.FirstOrDefaultAsync(l => l.Email.ToLower() == email);
-        if (loja == null)
-        {
-            return RedirectToAction("Create");
-        }
-
-        HttpContext.Session.SetInt32("LojaId", loja.IdLoja);
-        HttpContext.Session.SetString("Email", loja.Email);
-        HttpContext.Session.SetString("LojaNome", loja.Nome);
-
-        return RedirectToAction("Index", "Product");
+        ModelState.AddModelError("Email", "Informe um email válido.");
+        return View();
     }
+
+    email = email.Trim().ToLower();
+
+    var loja = await _context.Lojas.FirstOrDefaultAsync(l => l.Email.ToLower() == email);
+    if (loja == null)
+    {
+        TempData["Message"] = "Usuário não encontrado. Cadastre sua loja.";
+        return RedirectToAction("Create");
+    }
+
+    HttpContext.Session.SetInt32("LojaId", loja.IdLoja);
+    HttpContext.Session.SetString("Email", loja.Email);
+    HttpContext.Session.SetString("LojaNome", loja.Nome);
+
+    return RedirectToAction("Index", "Product");
+}
 
     public IActionResult Create() => View();
 

@@ -2,7 +2,15 @@
   "Files": [
     {
       "Id": "C:\\Users\\mathe\\OneDrive\\Desktop\\ProductRegisterApp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\ProductControl.bundle.scp.css",
-      "PackagePath": "staticwebassets\\ProductControl.hxcya0mekt.bundle.scp.css"
+      "PackagePath": "staticwebassets\\ProductControl.jhg8yu6439.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\mathe\\OneDrive\\Desktop\\ProductRegisterApp\\wwwroot\\css\\cadastro.css",
+      "PackagePath": "staticwebassets\\css\\cadastro.css"
+    },
+    {
+      "Id": "C:\\Users\\mathe\\OneDrive\\Desktop\\ProductRegisterApp\\wwwroot\\css\\create.css",
+      "PackagePath": "staticwebassets\\css\\create.css"
     },
     {
       "Id": "C:\\Users\\mathe\\OneDrive\\Desktop\\ProductRegisterApp\\wwwroot\\css\\login.css",

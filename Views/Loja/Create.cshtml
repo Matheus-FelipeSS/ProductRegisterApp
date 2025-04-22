@@ -2,16 +2,47 @@
     ViewData["Title"] = "Cadastro de Loja";
 }
 
-<h2>Cadastro de Loja</h2>
+@section Styles {
+    <link rel="stylesheet" href="~/css/cadastro.css" />
+}
 
-<form method="post">
-    <div class="form-group">
-        <label for="nome">Nome</label>
-        <input type="text" class="form-control" id="nome" name="Nome" required />
+<div class="cadastro-container">
+    <h2>Cadastro de Loja</h2>
+
+    @if (TempData["Message"] != null)
+    {
+        <div id="temp-message" class="alert alert-warning text-center">
+            @TempData["Message"]
+        </div>
+    }
+
+    <form asp-controller="Loja" asp-action="Create" method="post">
+        <div class="mb-3">
+            <label for="nome" class="form-label">Nome</label>
+            <input type="text" name="Nome" class="form-control" id="nome" required />
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" name="Email" class="form-control" id="email" required />
+        </div>
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+    </form>
+
+    <div class="cadastro-footer">
+        <span>Já tem uma conta? </span>
+        <a asp-controller="Loja" asp-action="Login">Ir para o login</a>
     </div>
-    <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" class="form-control" id="email" name="Email" required />
-    </div>
-    <button type="submit" class="btn btn-primary">Cadastrar</button>
-</form>
+</div>
+
+@section Scripts {
+    <script>
+        setTimeout(function () {
+            var msg = document.getElementById('temp-message');
+            if (msg) {
+                msg.style.transition = 'opacity 0.5s ease';
+                msg.style.opacity = '0';
+                setTimeout(() => msg.remove(), 500);
+            }
+        }, 3000);
+    </script>
+}
