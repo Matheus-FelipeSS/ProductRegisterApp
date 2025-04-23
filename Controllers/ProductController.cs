@@ -27,8 +27,9 @@ namespace ProductControl.Controllers
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"[ERRO INDEX] {ex.Message}");
-                return Content("Erro ao carregar a lista de produtos.");
+                Console.WriteLine($"ERRO: {ex.Message}");
+                TempData["ErrorMessage"] = "Ocorreu um erro ao carregar os produtos";
+                return RedirectToAction("Index");
             }
         }
 
@@ -49,86 +50,147 @@ namespace ProductControl.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Product product)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                ViewData["Title"] = "Criar Produto";
+                if (!ModelState.IsValid)
+                {
+                    ViewData["Title"] = "Criar Produto";
+                    return View("Form", product);
+                }
+
+                var idLoja = HttpContext.Session.GetInt32("LojaId");
+                if (idLoja == null)
+                    return RedirectToAction("Login", "Loja");
+
+                product.IdLoja = idLoja.Value;
+                product.CreatedAt = DateTime.Now;
+
+                await _productService.AddAsync(product);
+
+                TempData["Mensagem"] = "✅ Produto cadastrado com sucesso!";
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"ERRO: {ex.Message}");
+                TempData["ErrorMessage"] = "Erro ao cadastrar o produto";
                 return View("Form", product);
             }
-
-            var idLoja = HttpContext.Session.GetInt32("LojaId");
-            if (idLoja == null)
-                return RedirectToAction("Login", "Loja");
-
-            product.IdLoja = idLoja.Value;
-            product.CreatedAt = DateTime.Now;
-
-            await _productService.AddAsync(product);
-
-            TempData["Mensagem"] = "✅ Produto cadastrado com sucesso!";
-            return RedirectToAction(nameof(Index));
         }
 
         public async Task<IActionResult> Edit(int id)
         {
-            var product = await _productService.GetByIdAsync(id);
-            if (product == null)
-                return NotFound();
+            try
+            {
+                var product = await _productService.GetByIdAsync(id);
+                if (product == null)
+                {
+                    TempData["ErrorMessage"] = "Produto não encontrado";
+                    return RedirectToAction(nameof(Index));
+                }
 
-            ViewData["Title"] = "Editar Produto";
-            return View("Form", product);
+                ViewData["Title"] = "Editar Produto";
+                return View("Form", product);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"ERRO: {ex.Message}");
+                TempData["ErrorMessage"] = "Erro ao carregar o produto";
+                return RedirectToAction(nameof(Index));
+            }
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Product product)
         {
-            if (id != product.IdProduct)
-                return NotFound();
-
-            if (!ModelState.IsValid)
+            try
             {
-                ViewData["Title"] = "Editar Produto";
+                if (id != product.IdProduct)
+                {
+                    TempData["ErrorMessage"] = "Produto não encontrado";
+                    return RedirectToAction(nameof(Index));
+                }
+
+                if (!ModelState.IsValid)
+                {
+                    ViewData["Title"] = "Editar Produto";
+                    return View("Form", product);
+                }
+
+                var idLoja = HttpContext.Session.GetInt32("LojaId");
+                if (idLoja == null)
+                    return RedirectToAction("Login", "Loja");
+
+                product.IdLoja = idLoja.Value;
+
+                await _productService.UpdateAsync(product);
+
+                TempData["Mensagem"] = "✏️ Produto atualizado com sucesso!";
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"ERRO: {ex.Message}");
+                TempData["ErrorMessage"] = "Erro ao atualizar o produto";
                 return View("Form", product);
             }
-
-            var idLoja = HttpContext.Session.GetInt32("LojaId");
-            if (idLoja == null)
-                return RedirectToAction("Login", "Loja");
-
-            product.IdLoja = idLoja.Value;
-
-            await _productService.UpdateAsync(product);
-
-            TempData["Mensagem"] = "✏️ Produto atualizado com sucesso!";
-            return RedirectToAction(nameof(Index));
         }
 
         public async Task<IActionResult> Delete(int id)
         {
-            var product = await _productService.GetByIdAsync(id);
-            if (product == null)
-                return NotFound();
+            try
+            {
+                var product = await _productService.GetByIdAsync(id);
+                if (product == null)
+                {
+                    TempData["ErrorMessage"] = "Produto não encontrado";
+                    return RedirectToAction(nameof(Index));
+                }
 
-            ViewData["Title"] = "Excluir Produto";
-            return View(product);
+                ViewData["Title"] = "Excluir Produto";
+                return View(product);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"ERRO: {ex.Message}");
+                TempData["ErrorMessage"] = "Erro ao carregar o produto";
+                return RedirectToAction(nameof(Index));
+            }
         }
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            await _productService.DeleteAsync(id);
-
-            TempData["Mensagem"] = "🗑️ Produto excluído com sucesso!";
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                await _productService.DeleteAsync(id);
+                TempData["Mensagem"] = "🗑️ Produto excluído com sucesso!";
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"ERRO: {ex.Message}");
+                TempData["ErrorMessage"] = "Erro ao excluir o produto";
+                return RedirectToAction(nameof(Index));
+            }
         }
 
         public async Task<IActionResult> Finish(int id)
         {
-            await _productService.FinishAsync(id);
-
-            TempData["Mensagem"] = "✅ Produto marcado como finalizado.";
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                await _productService.FinishAsync(id);
+                TempData["Mensagem"] = "✅ Produto marcado como finalizado.";
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"ERRO: {ex.Message}");
+                TempData["ErrorMessage"] = "Erro ao finalizar o produto";
+                return RedirectToAction(nameof(Index));
+            }
         }
     }
 }
