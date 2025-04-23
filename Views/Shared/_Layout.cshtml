@@ -35,43 +35,48 @@
 <body class="d-flex flex-column min-vh-100">
     <header>
         <nav class="navbar navbar-expand-md navbar-light bg-white border-bottom shadow-sm mb-3">
-            <div class="container">
-                <a class="navbar-brand d-flex align-items-center" asp-area="" asp-controller="Product"
-                    asp-action="Index">
-                    <i class="bi bi-box-seam me-2"></i> ProductControl
-                </a>
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center" asp-area="" asp-controller="Product" asp-action="Index">
+            <i class="bi bi-box-seam me-2"></i> ProductControl
+        </a>
 
-                @if (lojaLogada != null)
-                {
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav ms-auto">
-                            <li class="nav-item me-3">
-                                <span class="navbar-text fw-bold">
-                                    <i class="bi bi-shop me-1"></i> @nomeDaLoja
-                                </span>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" asp-controller="Product" asp-action="Index">
-                                    <i class="bi bi-list-ul me-1"></i> Produtos
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" asp-controller="Product" asp-action="Create">
-                                    <i class="bi bi-plus-circle me-1"></i> Novo Produto
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <form asp-controller="Loja" asp-action="Logout" method="post" class="d-inline">
-                                    <button type="submit" class="btn btn-link nav-link">
-                                        <i class="bi bi-box-arrow-right me-1"></i> Sair
-                                    </button>
-                                </form>
-                            </li>
-                        </ul>
-                    </div>
-                }
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        @if (lojaLogada != null)
+        {
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item me-3">
+                        <span class="navbar-text fw-bold">
+                            <i class="bi bi-shop me-1"></i> @nomeDaLoja
+                        </span>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Product" asp-action="Index">
+                            <i class="bi bi-list-ul me-1"></i> Produtos
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Product" asp-action="Create">
+                            <i class="bi bi-plus-circle me-1"></i> Novo Produto
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <form asp-controller="Loja" asp-action="Logout" method="post" class="d-inline">
+                            <button type="submit" class="btn btn-link nav-link">
+                                <i class="bi bi-box-arrow-right me-1"></i> Sair
+                            </button>
+                        </form>
+                    </li>
+                </ul>
             </div>
-        </nav>
+        }
+    </div>
+</nav>
+
     </header>
 
     <main role="main" class="pb-3 flex-grow-1">
