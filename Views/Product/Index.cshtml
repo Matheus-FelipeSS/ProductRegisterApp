@@ -41,17 +41,17 @@
                                 <h5 class="card-title text-primary fw-semibold">@product.Produto</h5>
                                 <p class="card-text flex-grow-1">
                                     <strong>Quantidade:</strong> @product.Quantidade <br />
-                                    <strong>Fabricação:</strong> @product.DataFabricacao.ToString("dd/MM/yyyy") <br />
-                                    <strong>Validade:</strong> @product.Validade.ToString("dd/MM/yyyy")
+                                    <strong>Fabricação:</strong> @(product.DataFabricacao?.ToString("dd/MM/yyyy") ?? "Não informado") <br />
+                                    <strong>Validade:</strong> @(product.Validade?.ToString("dd/MM/yyyy") ?? "Não informado")
                                 </p>
                             </div>
                             <div class="card-footer bg-transparent border-0 d-flex flex-wrap gap-2">
                                 <a asp-controller="Product" asp-action="Edit" asp-route-id="@product.IdProduct"
-                                    class="btn btn-outline-warning btn-sm flex-fill">
+                                   class="btn btn-outline-warning btn-sm flex-fill">
                                     <i class="bi bi-pencil-square me-1"></i> Editar
                                 </a>
                                 <form asp-controller="Product" asp-action="Delete" asp-route-id="@product.IdProduct"
-                                    method="post" class="flex-fill">
+                                      method="post" class="flex-fill">
                                     <button type="submit" class="btn btn-outline-danger btn-sm w-100">
                                         <i class="bi bi-trash me-1"></i> Excluir
                                     </button>

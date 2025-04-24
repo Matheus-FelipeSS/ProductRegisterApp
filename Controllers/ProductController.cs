@@ -36,13 +36,7 @@ namespace ProductControl.Controllers
         public IActionResult Create()
         {
             ViewData["Title"] = "Criar Produto";
-
-            var produto = new Product
-            {
-                DataFabricacao = DateOnly.FromDateTime(DateTime.Now),
-                Validade = DateOnly.FromDateTime(DateTime.Now.AddDays(30))
-            };
-
+            var produto = new Product(); // <- sem definir datas
             return View("Form", produto);
         }
 

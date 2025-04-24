@@ -29,13 +29,14 @@ public class Product
     [Required(ErrorMessage = "O campo {0} é obrigatório.")]
     [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
     [FutureOrPresent(ErrorMessage = "A data de fabricação deve ser hoje ou em uma data futura.")]
-    public DateOnly DataFabricacao { get; set; }
+    public DateOnly? DataFabricacao { get; set; }
 
     [Display(Name = "Validade")]
     [Required(ErrorMessage = "O campo {0} é obrigatório.")]
     [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
     [FutureOrPresent(ErrorMessage = "A data de validade deve ser posterior à data de fabricação.")]
-    public DateOnly Validade { get; set; }
+    public DateOnly? Validade { get; set; }
+
 
     [Display(Name = "Criado em")]
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
