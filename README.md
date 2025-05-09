@@ -42,11 +42,4 @@ ProductControl é uma aplicação ASP.NET Core MVC (.NET 8) que permite o contro
 - Visualização de produtos por loja
 
 ## Configuração
-A string de conexão do PostgreSQL deve ser configurada no arquivo `appsettings.json`:
-```json
-{
-  "ConnectionStrings": {
-    "DefaultConnection": "Host=ep-snowy-dust-aco08xg7-pooler.sa-east-1.aws.neon.tech;Database=neondb;Username=neondb_owner;Password=npg_8ogeuyXzKCq4;SSL Mode=Require;Trust Server Certificate=true"
-  }
-}
-``` 
+A string de conexão do PostgreSQL deve ser configurada no arquivo `appsettings.json`
